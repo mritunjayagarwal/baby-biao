@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <!-- 你为什么要看这个源代码？ 你在浪费时间。 去买$BBIAO -->
+  <title>Baby Biao</title>
+	<link rel="canonical" href="https://biaocoin.xyz" />
+  <link rel="icon" type="image/png" href="biao.png" />
+  <link rel="stylesheet" href="ajax/libs/normalize/8.0.1/normalize.min.css">
+  <style>
+    @font-face {
+        font-family: 'Chinese Dragon';
+        src: url('ChineseDragon-Regular.eot');
+        src: url('ChineseDragon-Regular.eot') format('embedded-opentype'),
+            url('ChineseDragon-Regular.woff') format('woff2'),
+            url('ChineseDragon-Regular.woff') format('woff'),
+            url('ChineseDragon-Regular.ttf') format('truetype'),
+            url('ChineseDragon-Regular.svg') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    body {
+        background-image: url('biao.png');
+        background-repeat: repeat;
+    }
+    #container {
+      position: relative;
+    }
+    #video1 {
+      position: absolute;
+      background-color: white;
+      bottom: 10px;
+      left: 10px;
+      border: dashed black 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .video {
+      font-family: 'Chinese Dragon'; font-weight: normal; font-style: normal;
+      background-color: white;
+      border: 5px dashed black;
+      margin: auto;
+      width: 495px;
+      margin-right: 5px;
+      margin-top: 25px;
+      float: right;
+      max-height: 660px;
+      overflow: hidden;
+    }
+    #image-top-right {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      height: 175px;
+      width: 175px;
+    }
+    #image-top-left {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      height: 175px;
+      width: 175px;
+    }
+    #dark-mode-icon {
+      position: fixed;
+      top: 10px;
+      right: 175px;
+      height: 50px;
+    }
+    #titlediv {
+      font-family: 'Chinese Dragon'; font-weight: normal; font-style: normal;
+      font-size: 90px;
+      text-align: center;
+      background-color: white;
+      border: 5px dashed black;
+      margin: auto;
+      width: 1024px;
+      margin-top: 65px;
+    }
+    #infodiv {
+      font-family: 'Chinese Dragon'; font-weight: normal; font-style: normal;
+      font-size: 36px;
+      text-align: center;
+      background-color: white;
+      border: 5px dashed black;
+      margin: auto;
+      width: 1024px;
+      margin-top: 25px;
+    }
+    #teamdiv {
+      font-family: 'Chinese Dragon'; font-weight: normal; font-style: normal;
+      font-size: 36px;
+      text-align: center;
+      background-color: white;
+      border: 5px dashed black;
+      margin: auto;
+      width: 1024px;
+      margin-top: 25px;
+    }
+    .ndmw {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .ndmw-content {
+      font-family: 'Chinese Dragon'; font-weight: normal; font-style: normal;
+      font-size: 36px;
+      text-align: center;
+      background-color: #ffffff;
+      margin: auto;
+      padding: 20px;
+      border: 5px dashed #000;
+      width: 525px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .close {
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .closeBiao {
+      font-size: 120px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 10px;
+    }
+    #song {
+        margin: auto;
+    }
+    twitterwidget::shadow .EmbeddedTweet {
+        width: 300px;
+        max-width: 300px;
+    }
+    #centerCol {
+        width: 1024px;
+        max-width: 1024px;
+        margin: auto;
+    }
+    .teamTable {
+        width: 900px; 
+        margin-top: 15px;
+        margin-bottom: 15px;
+                border: 1px dotted gray; 
+    }
+    .teamTable tr {
+        text-align: center;
+        vertical-align: center;
+    }
+  </style>
+</head>
+<body>
+  <img id="image-top-right" src="biaotoprightcorner.png"/>
+  <img id="image-top-left" src="biaotopleftcorner.png"/>
+  <a href="javascript:thereIsNoDarkMode();"><img id="dark-mode-icon" src="darkmode.png"/></a>
+  <div id="container">
+  </div>
+  <div id="ndm" class="ndmw">
+    <!-- Modal content -->
+    <div class="ndmw-content">
+      <img src="no.jpg" width="450px"/>
+      <p>
+            The sun always shines on $BBIAO.<br/>There is no dark mode.
+      </p>
+      <p>
+            太阳永远照耀着$BBIAO。 <br/> 没有黑暗模式。
+      </p>
+      <button class="close" onclick="closeIt()">$BBIAO</button>
+    </div>
+  </div>
+  <div id="op" class="ndmw">
+    <!-- Modal content -->
+    <div class="ndmw-content">
+      <!--p>
+            Welcome to the new paradigm: $BBIAO.
+      </p>
+      <p>
+            欢迎来到新范式: $BBIAO.
+      </p-->
+      <button class="closeBiao" onclick="closeStart()">$BBIAO</button>
+    </div>
+  </div>
+  <center>
+  <audio id="song" controls>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+  </center>
+  <div id="centerCol">
+      <div id="titlediv">
+        $BBIAO --- Baby Biao --- $BBIAO
+      </div>
+      <div id="infodiv">
+        <p>Twitter:<br/><a href="https://twitter.com/biaocoin" target="_blank">@BiaoCoin</a></p>
+        <p>Contract Address (合同):<br/><a href="https://etherscan.io/address/0x00282FD551D03dC033256C4bf119532e8C735D8a" target="_blank">0x00282FD551D03dC033256C4bf119532e8C735D8a</a></p>
+        <p>DexTools:<br/><a href="https://www.dextools.io/app/en/ether/pair-explorer/0x8296d84e911e0c1f827e1e7d4b50c2568e807b36"        target="_blank">DexTools</a></p>
+      </div>
+      <div id="teamdiv">
+        <center>
+        <table class="teamTable">
+            <tr>
+                <th colspan="4"> Meet the Team - 会见开发团队 </th>
+            </tr>
+            <tr>
+                <td> <img src="shadesbiao2.jpg" height="200px"/> <td> Baby Biao </td>
+                <td> <img src="biaopepe2.jpg" height="200px"/> <td> Baby Biao's dog<br/> 狗 </td>
+            </tr>
+            <tr>
+                <td> <img src="telebiao2.jpg" height="200px"/> <td> Lead Dev<br/> 首席软件开发人员 </td>
+                <td> <img src="surprisebiao2.png" height="200px"/> <td> Community<br/> 社区管理员 </td>
+            </tr>
+            <tr>
+                <td> <img src="biaobiao.jpg" height="200px"/> <td> Future</br> 未来 </td>
+                <td> <img src="beerbiao2.jpg" height="200px"/> <td> Cousin<br/> 表哥</td>
+            </tr>
+        </table>
+        </center>
+      </div>
+      <div class="video">
+        <center>
+            <blockquote class="twitter-tweet" data-dnt="true"><p lang="zh" dir="ltr">Even camels like <a href="https://twitter.com/search?q=%24BIAO&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$BBiao</a>. <br><br>Do not fade us. <br><br>连骆驼都像biao<br><br>不要让我们褪色 <a href="https://t.co/iKfwMWsOzQ">pic.twitter.com/iKfwMWsOzQ</a></p>&mdash; Biaocoin (@biaocoin) <a href="https://twitter.com/biaocoin/status/1661747619499241477?ref_src=twsrc%5Etfw">May 25, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+        </center>
+      </div>
+      <div class="video">
+        <center>
+          <blockquote class="twitter-tweet" data-dnt="true"><p lang="zh" dir="ltr"><a href="https://twitter.com/search?q=%24BIAO&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$BBIAO</a> coin is going global 🌍 <br><br>To the Moon from Africa<a href="https://twitter.com/search?q=%24BIAO&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$BBIAO</a> 硬币走向全球🌍<br><br>从非洲到月球 <a href="https://t.co/h1Nv9o0AZs">pic.twitter.com/h1Nv9o0AZs</a></p>&mdash; Biaocoin (@biaocoin) <a href="https://twitter.com/biaocoin/status/1661390406498541570">May 24, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+        </center>
+      </div>
+      <br/>
+      <div class="video">
+        <center>
+            <blockquote class="twitter-tweet" data-dnt="true"><p lang="zh" dir="ltr">Today Biao launch. Notification 🔔 be ready for presale.<br><br>Biao welcome you home to telegram<a href="https://t.co/ihQxEvCEiC">https://t.co/ihQxEvCEiC</a><br><br>今天飚车。通知🔔准备预售 <a href="https://t.co/xcy8oj8B5g">pic.twitter.com/xcy8oj8B5g</a></p>&mdash; Biaocoin (@biaocoin) <a href="https://twitter.com/biaocoin/status/1662101776554774531?ref_src=twsrc%5Etfw">May 26, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+        </center>
+      </div>
+      <div class="video">
+        <center>
+            <blockquote class="twitter-tweet" data-dnt="true"><p lang="zh" dir="ltr">Stealth launch tomorrow <a href="https://twitter.com/search?q=%24BIAO&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$BBiao</a>. <br><br>People say presale will jeet but no worry Biao holders worldwide hold for moon<br><br>明日隐身发射$飚。<br><br>人们说预售会很顺利，但不用担心全世界的 Biao 持有者都在等着登月 <a href="https://t.co/LA8Vr7k9EI">pic.twitter.com/LA8Vr7k9EI</a></p>&mdash; Biaocoin (@biaocoin) <a href="https://twitter.com/biaocoin/status/1661866815666937856?ref_src=twsrc%5Etfw">May 25, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+        </center>
+      </div>
+  </div>
+</body>
+<script>
+    function start() {
+        document.getElementById("op").style.display = "block";
+    }
+    function thereIsNoDarkMode() {
+      document.getElementById("ndm").style.display = "block";
+    }
+    function closeIt() {
+      document.getElementById("ndm").style.display = "none";
+    }
+    var closeStart = function() {
+        document.getElementById("op").style.display = "none";
+        var song = document.getElementById("song");
+        song.muted = false;
+        song.play();
+    }
+    start();
+  </script>
+</html>
